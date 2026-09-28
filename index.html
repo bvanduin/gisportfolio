@@ -27,10 +27,8 @@
   .project-text{flex:1;min-width:280px;}
   .project-img{flex:1;min-width:280px;}
   .project-img img{width:100%;display:block;border-radius:2px;}
-  .filmstrip{display:flex;flex-wrap:wrap;gap:8px;}
+  .filmstrip{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
   .filmstrip img{width:calc(20% - 6.4px);display:block;border-radius:2px;}
-  .project-mekong-hero img{width:100%;display:block;border-radius:2px;margin-bottom:24px;}
-  .mekong-body .project-text{margin-bottom:20px;}
   .stat{font-family:'IBM Plex Mono',monospace;color:var(--ochre);font-size:1.5rem;margin:6px 0 14px;}
   .project h2{font-size:1.3rem;margin-bottom:4px;}
   .project p{margin:0;}
@@ -53,22 +51,22 @@
 <hr class="rule">
 
 <div class="project">
-  <div class="project-mekong-hero">
-    <img src="images/mekong-erosion.jpg" alt="Erosion and accretion map of the Mekong Delta coastline, 1988-2024">
-  </div>
-  <div class="mekong-body">
+  <div class="project-inner">
+    <div class="project-img">
+      <img src="images/mekong-erosion.jpg" alt="Erosion and accretion map of the Mekong Delta coastline, 1988-2024">
+    </div>
     <div class="project-text">
       <h2>Coastline Change Analysis, Mekong Delta</h2>
       <div class="stat">–72 km² net land loss (1988–2024)</div>
       <p>Using 36 years of Landsat satellite imagery in Google Earth Engine, I mapped how Vietnam's Mekong Delta coastline has shifted, finding a net loss of about 72 square kilometers of land, consistent with independent estimates from local researchers. The erosion tracks closely with a measured decline in river sediment, likely a downstream consequence of upstream dam construction.</p>
     </div>
-    <div class="filmstrip">
-      <img src="images/mekong-composite.jpg" alt="Landsat composite of the Mekong Delta">
-      <img src="images/mekong-cluster.jpg" alt="Unsupervised clustering output">
-      <img src="images/mekong-watermask.png" alt="Binary water mask">
-      <img src="images/mekong-landwater.png" alt="Cleaned land-water boundary">
-      <img src="images/mekong-coastline.jpg" alt="Coastline vector overlay">
-    </div>
+  </div>
+  <div class="filmstrip">
+    <img src="images/mekong-composite.jpg" alt="Landsat composite of the Mekong Delta">
+    <img src="images/mekong-cluster.jpg" alt="Unsupervised clustering output">
+    <img src="images/mekong-watermask.png" alt="Binary water mask">
+    <img src="images/mekong-landwater.png" alt="Cleaned land-water boundary">
+    <img src="images/mekong-coastline.jpg" alt="Coastline vector overlay">
   </div>
 </div>
 
