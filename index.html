@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Benjamin van Duin — Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFEFE8; --ink:#1C2320; --green:#2E5339; --blue:#3B6E8F; --ochre:#C98A3E;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;line-height:1.6;}
+  h1,h2{font-family:'Spectral',serif;font-weight:600;margin:0;}
+  .header{
+    background-image:url('images/header-contour.png');
+    background-size:cover; background-position:center;
+    padding:110px 24px 90px; text-align:center;
+  }
+  .header h1{font-size:2.4rem;}
+  .header p{font-size:1.05rem;color:var(--blue);margin-top:10px;}
+  .rule{border:none;border-top:1px solid #c9c7bb;width:80%;margin:0 auto;}
+  .project{max-width:1000px;margin:70px auto;padding:0 24px;}
+  .project-inner{display:flex;gap:40px;align-items:flex-start;}
+  .project-inner.reverse{flex-direction:row-reverse;}
+  .project-text{flex:1;min-width:280px;}
+  .project-img{flex:1;min-width:280px;}
+  .project-img img{width:100%;display:block;border-radius:2px;}
+  .filmstrip{display:flex;flex-wrap:wrap;gap:8px;}
+  .filmstrip img{width:calc(20% - 6.4px);display:block;border-radius:2px;}
+  .project-mekong-hero img{width:100%;display:block;border-radius:2px;margin-bottom:24px;}
+  .mekong-body .project-text{margin-bottom:20px;}
+  .stat{font-family:'IBM Plex Mono',monospace;color:var(--ochre);font-size:1.5rem;margin:6px 0 14px;}
+  .project h2{font-size:1.3rem;margin-bottom:4px;}
+  .project p{margin:0;}
+  footer{max-width:1000px;margin:80px auto 60px;padding:0 24px;text-align:center;}
+  footer a{color:var(--green);text-decoration:none;border-bottom:1px solid var(--green);}
+  footer .tagline{color:#555;margin-top:14px;font-size:0.95rem;}
+  @media(max-width:700px){
+    .project-inner, .project-inner.reverse{flex-direction:column;}
+    .filmstrip img{width:calc(33.33% - 6px);}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Benjamin van Duin</h1>
+  <p>Quantifying environmental change through remote sensing and spatial analysis</p>
+</div>
+
+<hr class="rule">
+
+<div class="project">
+  <div class="project-mekong-hero">
+    <img src="images/mekong-erosion.jpg" alt="Erosion and accretion map of the Mekong Delta coastline, 1988-2024">
+  </div>
+  <div class="mekong-body">
+    <div class="project-text">
+      <h2>Coastline Change Analysis, Mekong Delta</h2>
+      <div class="stat">–72 km² net land loss (1988–2024)</div>
+      <p>Using 36 years of Landsat satellite imagery in Google Earth Engine, I mapped how Vietnam's Mekong Delta coastline has shifted, finding a net loss of about 72 square kilometers of land, consistent with independent estimates from local researchers. The erosion tracks closely with a measured decline in river sediment, likely a downstream consequence of upstream dam construction.</p>
+    </div>
+    <div class="filmstrip">
+      <img src="images/mekong-composite.jpg" alt="Landsat composite of the Mekong Delta">
+      <img src="images/mekong-cluster.jpg" alt="Unsupervised clustering output">
+      <img src="images/mekong-watermask.png" alt="Binary water mask">
+      <img src="images/mekong-landwater.png" alt="Cleaned land-water boundary">
+      <img src="images/mekong-coastline.jpg" alt="Coastline vector overlay">
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<div class="project">
+  <div class="project-inner reverse">
+    <div class="project-img">
+      <img src="images/sdm-habitat.png" alt="Predicted Carolina wren habitat suitability map">
+    </div>
+    <div class="project-text">
+      <h2>Species Distribution Model, Carolina Wren</h2>
+      <div class="stat">AUC = 0.71</div>
+      <p>I built a predictive habitat model for the Carolina wren using public species-sighting data and climate variables in R, then tested it against a decade of independent bird population data. The model predicted habitat suitability well, but the follow-up test revealed a limit: it tracked shifting temperature patterns more closely than actual population change, a reminder that climate alone doesn't fully explain how adaptable species respond.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<div class="project">
+  <div class="project-inner">
+    <div class="project-img">
+      <img src="images/pm25-who.png" alt="Map of population percentage above WHO PM2.5 guideline">
+    </div>
+    <div class="project-text">
+      <h2>Population Exposure to PM2.5, Europe</h2>
+      <div class="stat">28.7M people above WHO guidelines</div>
+      <p>I mapped fine particulate air pollution exposure across roughly 1,300 regions in Europe, combining satellite pollution data with population data to see who is actually breathing unsafe air. The pollution clustered strongly by geography, with the Balkans and northern Italy standing out, but statistically, population density barely mattered, pointing instead to industrial activity and cross-border pollution as the real drivers.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<footer>
+  <p>
+    <a href="resume.pdf">Resume</a> &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/benjamin-van-duin/">LinkedIn</a> &nbsp;·&nbsp;
+    <a href="mailto:bvanduin1@gmail.com">Email</a>
+  </p>
+  <p class="tagline">Open to entry-level opportunities in environmental science, GIS, and remote sensing.</p>
+</footer>
+
+</body>
+</html>
