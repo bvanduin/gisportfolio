@@ -2,52 +2,82 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Benjamin van Duin — Portfolio</title>
+<title>GIS Portfolio | Benjamin van Duin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#EFEFE8; --ink:#1C2320; --green:#2E5339; --blue:#3B6E8F; --ochre:#C98A3E;
-  }
+  :root{--bg:#EFEFE8;--ink:#1C2320;--green:#2E5339;--blue:#3B6E8F;--ochre:#C98A3E;}
   *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;line-height:1.6;}
   h1,h2{font-family:'Spectral',serif;font-weight:600;margin:0;}
-  .header{
-    background-color:#DCE3DA;
-    padding:60px 24px 50px; text-align:center;
+
+  /* Landing hero */
+  .hero{
+    min-height:72vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:80px 24px;color:#fff;
+    background:linear-gradient(135deg,#2E5339 0%,#3B6E8F 100%);
   }
-  .header h1{font-size:2.4rem;}
-  .header p{font-size:1.05rem;color:var(--blue);margin-top:10px;}
+  .hero h1{font-size:clamp(3rem,9vw,6rem);line-height:1.05;letter-spacing:-.01em;}
+  .hero .name{font-family:'Spectral',serif;font-size:clamp(1.3rem,3.5vw,2rem);margin-top:18px;}
+
+  /* Tabs */
+  .tabs{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid #c9c7bb;display:flex;justify-content:center;gap:12px;}
+  .tab{background:none;border:none;font:500 1rem 'IBM Plex Sans',sans-serif;color:var(--ink);padding:16px 28px;cursor:pointer;border-bottom:3px solid transparent;}
+  .tab:hover{color:var(--green);}
+  .tab.active{color:var(--green);border-bottom-color:var(--green);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+  noscript .tab-panel{display:block;}
+
+  /* Projects */
   .rule{border:none;border-top:1px solid #c9c7bb;width:80%;margin:0 auto;}
   .project{max-width:1000px;margin:70px auto;padding:0 24px;}
   .project-inner{display:flex;gap:40px;align-items:flex-start;}
   .project-inner.reverse{flex-direction:row-reverse;}
-  .project-text{flex:1;min-width:280px;}
-  .project-img{flex:1;min-width:280px;}
+  .project-text,.project-img{flex:1;min-width:280px;}
   .project-img img{width:100%;display:block;border-radius:2px;}
-  .filmstrip{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+  .filmstrip{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;}
   .filmstrip img{width:calc(20% - 6.4px);display:block;border-radius:2px;}
   .stat{font-family:'IBM Plex Mono',monospace;color:var(--ochre);font-size:1.5rem;margin:6px 0 14px;}
   .project h2{font-size:1.3rem;margin-bottom:4px;}
   .project p{margin:0;}
+
+  /* Maps */
+  .maps{max-width:1000px;margin:70px auto;padding:0 24px;}
+  .maps h2{font-size:1.6rem;}
+  .maps .intro{margin:8px 0 28px;color:#555;}
+  .map-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px;}
+  .map-card img{width:100%;display:block;border-radius:2px;}
+  .map-card h3{font-family:'Spectral',serif;font-size:1.1rem;margin:10px 0 2px;}
+  .map-card p{margin:0;font-size:.95rem;}
+  .map-card .meta{color:var(--blue);font-size:.85rem;}
+  .soon{padding:40px;border:1px dashed #b9b7a9;text-align:center;color:#666;}
+
   footer{max-width:1000px;margin:80px auto 60px;padding:0 24px;text-align:center;}
   footer a{color:var(--green);text-decoration:none;border-bottom:1px solid var(--green);}
-  footer .tagline{color:#555;margin-top:14px;font-size:0.95rem;}
+  footer .tagline{color:#555;margin-top:14px;font-size:.95rem;}
   @media(max-width:700px){
-    .project-inner, .project-inner.reverse{flex-direction:column;}
+    .project-inner,.project-inner.reverse{flex-direction:column;}
     .filmstrip img{width:calc(33.33% - 6px);}
   }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>Benjamin van Duin</h1>
-  <p>Quantifying environmental change through remote sensing and spatial analysis</p>
-</div>
+<header class="hero">
+  <h1>GIS Portfolio</h1>
+  <div class="name">Benjamin van Duin</div>
+</header>
 
-<hr class="rule">
+<nav class="tabs" role="tablist">
+  <button class="tab" data-tab="projects" role="tab">Projects</button>
+  <button class="tab" data-tab="maps" role="tab">Maps</button>
+</nav>
+
+<!-- ===================== PROJECTS TAB ===================== -->
+<main id="projects" class="tab-panel">
 
 <div class="project">
   <div class="project-inner">
@@ -56,8 +86,8 @@
     </div>
     <div class="project-text">
       <h2>Coastline Change Analysis, Mekong Delta</h2>
-      <div class="stat">~72 km² net land loss (1988–2024)</div>
-      <p>Using 36 years of Landsat satellite imagery in Google Earth Engine, I mapped how Vietnam's Mekong Delta coastline has shifted, finding a net loss of about 72 square kilometers of land, consistent with independent estimates from local researchers. The erosion tracks closely with a measured decline in river sediment, likely a downstream consequence of upstream dam construction.</p>
+      <div class="stat">–78 km² net land loss (1988–2024)</div>
+      <p>Using 36 years of Landsat satellite imagery in Google Earth Engine, I mapped how Vietnam's Mekong Delta coastline has shifted, finding a net loss of about 78 square kilometers of land, similar to independent estimates from local researchers. The erosion tracks closely with a measured decline in river sediment, likely a downstream consequence of upstream dam construction.</p>
     </div>
   </div>
   <div class="filmstrip">
@@ -99,7 +129,33 @@
   </div>
 </div>
 
-<hr class="rule">
+</main>
+
+<!-- ===================== MAPS TAB ===================== -->
+<section id="maps" class="tab-panel">
+  <div class="maps">
+    <h2>Maps</h2>
+    <p class="intro">Smaller maps and cartography work, made in ArcGIS.</p>
+
+    <div class="map-grid">
+      <!--
+        TO ADD A MAP: copy this whole block, remove the comment markers, and fill it in.
+        Put the image file in the images folder and match the filename below.
+
+        <div class="map-card">
+          <img src="images/YOUR-MAP-FILE.png" alt="Short description of the map">
+          <h3>Map title that says what it shows</h3>
+          <p>One line on the question it answers or what it shows.</p>
+          <div class="meta">ArcGIS Pro | Data: source and year</div>
+        </div>
+      -->
+    </div>
+
+    <div class="soon">More maps coming soon.</div>
+  </div>
+</section>
+
+<noscript><style>.tab-panel{display:block}</style></noscript>
 
 <footer>
   <p>
@@ -109,6 +165,21 @@
   </p>
   <p class="tagline">Open to entry-level opportunities in environmental science, GIS, and remote sensing.</p>
 </footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.tab-panel');
+  function show(id){
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === id));
+    panels.forEach(p => p.classList.toggle('active', p.id === id));
+  }
+  tabs.forEach(t => t.addEventListener('click', () => {
+    show(t.dataset.tab);
+    history.replaceState(null, '', '#' + t.dataset.tab);
+    document.querySelector('.tabs').scrollIntoView({behavior: 'smooth'});
+  }));
+  if (location.hash === '#maps' || location.hash === '#projects') show(location.hash.slice(1));
+</script>
 
 </body>
 </html>
