@@ -48,7 +48,7 @@
   .maps{max-width:1000px;margin:70px auto;padding:0 24px;}
   .maps h2{font-size:1.6rem;}
   .maps .intro{margin:8px 0 28px;color:#555;}
-  .map-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px;}
+  .map-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
   .map-card img{width:100%;display:block;border-radius:2px;}
   .map-card h3{font-family:'Spectral',serif;font-size:1.1rem;margin:10px 0 2px;}
   .map-card p{margin:0;font-size:.95rem;}
@@ -76,6 +76,7 @@
   @media(max-width:700px){
     .project-inner,.project-inner.reverse{flex-direction:column;}
     .filmstrip img{width:calc(33.33% - 6px);}
+    .map-grid{grid-template-columns:1fr;}
     .about-inner{flex-direction:column-reverse;}
     .about-photo{flex:none;width:100%;max-width:320px;}
   }
@@ -173,28 +174,28 @@
     <h3 class="sub">Cartography</h3>
     <div class="map-grid">
 
-      <div class="map-card wide">
+      <div class="map-card">
         <a href="images/map-newhaven.jpg" target="_blank" rel="noopener"><img src="images/map-newhaven.jpg" alt="Four-panel map of New Haven, CT showing elevation, hydrology, road types, and population density"></a>
         <h3>New Haven, CT: Four Layers of the City</h3>
         <p>Elevation with a 100 ft contour, hydrology, road types, and population density in five classes, shown side by side.</p>
         <div class="meta">ArcGIS Pro | Data: USGS, 2020 Census</div>
       </div>
 
-      <div class="map-card wide">
+      <div class="map-card">
         <a href="images/map-portland-density.jpg" target="_blank" rel="noopener"><img src="images/map-portland-density.jpg" alt="Four maps of Portland, OR population density using four classification methods"></a>
         <h3>Population Density in Portland, OR: Four Classification Methods</h3>
         <p>Quantiles, Jenks natural breaks, Equal Interval, and Geometric Interval applied to the same population density data (people per km²), showing how the choice of method changes the pattern.</p>
         <div class="meta">ArcGIS Pro | Data: Metro RLIS</div>
       </div>
 
-      <div class="map-card wide">
+      <div class="map-card">
         <a href="images/map-portland-symbols.jpg" target="_blank" rel="noopener"><img src="images/map-portland-symbols.jpg" alt="Downtown Portland population shown with three proportional symbol scalings and a dot density map"></a>
         <h3>Population in Downtown Portland, OR: Symbols vs. Dots</h3>
         <p>Three proportional symbol scaling methods (direct, Flannery, and range) alongside a dot density map (1 dot = 25 people) of the same population data.</p>
         <div class="meta">ArcGIS Pro | Data: Metro RLIS</div>
       </div>
 
-      <div class="map-card wide">
+      <div class="map-card">
         <a href="images/map-portland-roads.jpg" target="_blank" rel="noopener"><img src="images/map-portland-roads.jpg" alt="Map of the Portland, OR road network over shaded elevation with parks, vegetation, and water"></a>
         <h3>Portland, OR Roads</h3>
         <p>The Portland metro road network over shaded elevation, with parks, vegetation, and water, plus an inset locating the Tri-Metro boundary.</p>
@@ -203,7 +204,7 @@
 
       <!--
         TO ADD A MAP: copy a card above, change the image file and text, and keep the class names.
-        Use class "map-card" (no "wide") for smaller maps so they sit side by side.
+        Maps sit two per row. Use class "map-card wide" on a card to make it span the full width.
       -->
     </div>
 
